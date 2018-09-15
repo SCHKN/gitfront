@@ -12,4 +12,20 @@
 
 <img align="center" src="https://i.imgur.com/SeKLrtT.png" alt="front-page" />
 
+<h1 align='center'>
+  <img height='80' src='https://sendeyo.com/up/d/1140662d5f' alt='gitscientist' /> <br> How? Why? <br>
+  
+</h1>
+
+Gitfront was build with React and Redux. This project served as a basis for me to learn asynchronicity in Redux and middlewares.
+This project focuses on front-end, especially around <b>VueJS, React, Angular and Ember</b>, which are in 2018 the most popular front-end frameworks. <br>
+Gitfront uses <b>Webpack</b> as a module bundler and <b>Travis</b> for continuous integration.
+
+<h1 align='center'>
+  <img height='80' src='https://sendeyo.com/up/d/15c12aad5b' alt='gitscientist' /> <br> Usage <br>
+</h1>
+
+Simply click on the cards available at the top of the page. You can also filter your search by using the time filters available (day, week, month, year)
+
+If you like this project and want to support my work, do not hesitate to smash the :star: button!
 
