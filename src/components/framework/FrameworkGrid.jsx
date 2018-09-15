@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 
 const FrameworkGrid = ({ data }) => {
   return (
-    <Grid>
+    <Grid stackable columns={4}>
       <Grid.Row>
         {data &&
           data.frameworks &&
