@@ -2,7 +2,8 @@
   	<img height="80" src="https://sendeyo.com/up/d/f30c064b15" alt="gitfront" /> <br> gitfront <br>
     <img align='center' src="https://img.shields.io/badge/version-1.0.0-brightgreen.svg"/>  
     <img align='center' src='https://img.shields.io/badge/status-up-brightgreen.svg'/>
-    <img align='center' src='https://travis-ci.org/SCHKN/gitfront.svg?branch=master' />
+    <img align='center' src='https://travis-ci.org/SCHKN/gitfront.svg?branch=master' /> <br> <br>
+    <a href='http://www.schkn.io'> :star2: Visit Gitfront :star2: </a> <br> <br>
 </h1>
 
 
