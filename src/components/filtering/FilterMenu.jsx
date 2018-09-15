@@ -36,7 +36,7 @@ const mapDispatchToProps = (dispatch) => ({
 
 const FilterMenu = ({ changeFilter }) => {
   return (
-    <Menu size="large" className="animated fadeIn">
+    <Menu size="large">
       <Menu.Item header>Filters</Menu.Item>
       <Menu.Item>
         <Header as="h4">
