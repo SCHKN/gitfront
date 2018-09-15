@@ -9,7 +9,7 @@ const mapStateToProps = state => ({
 
 const FrameworkGrid = ({ data }) => {
   return (
-    <Grid stackable columns={4}>
+    <Grid stackable columns={4} className="animated fadeIn">
       <Grid.Row>
         {data &&
           data.frameworks &&

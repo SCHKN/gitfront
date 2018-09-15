@@ -16,7 +16,7 @@ class RepoList extends Component {
     return (
       <Segment
         loading={matchingFramework.isRepoFetching}
-        className="results-segment"
+        className="results-segment animated fadeIn"
       >
         {matchingFramework.repos &&
           matchingFramework.repos.map(repo => (
