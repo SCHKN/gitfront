@@ -16,12 +16,12 @@ const TopMenu = () => {
       </Menu.Item>
       <Menu.Menu position="right">
         <Menu.Item>
-          <Responsive {...Responsive.onlyLargeScreen}>
+          <Responsive {...Responsive.onlyComputer}>
             <Icon name="code" />
           </Responsive>
         </Menu.Item>
         <Menu.Item>
-          <Responsive {...Responsive.onlyLargeScreen}>
+          <Responsive {...Responsive.onlyComputer}>
             Built with <Icon name="heart" /> by{" "}
             <a href="https://github.com/SCHKN" className="schkn">
               SCHKN
