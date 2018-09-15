@@ -3,9 +3,11 @@
     <img align='center' src="https://img.shields.io/badge/version-1.0.0-brightgreen.svg"/>  
     <img align='center' src='https://img.shields.io/badge/status-up-brightgreen.svg'/>
     <img align='center' src='https://travis-ci.org/SCHKN/gitfront.svg?branch=master' /> <br> <br>
-    <a href='http://www.schkn.io'> :star2: Visit Gitfront :star2: </a> <br> <br>
+    
 </h1>
-
+<p align='center'>
+<a  href='http://www.schkn.io'> :star2: Visit Gitfront :star2: </a> <br> <br>
+</p>
 
 <p align='center'>Fetching the best front-end repositories on GitHub.</p>
 <p align='center'>Never miss the trendiest tech of the day! :chart_with_upwards_trend:</p> 
