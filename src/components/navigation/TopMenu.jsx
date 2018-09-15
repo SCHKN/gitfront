@@ -1,5 +1,5 @@
 import React from "react";
-import { Menu, Icon, Item, Header } from "semantic-ui-react";
+import { Menu, Icon, Responsive } from "semantic-ui-react";
 import logo from "../../images/artist.png";
 
 const TopMenu = () => {
@@ -16,13 +16,17 @@ const TopMenu = () => {
       </Menu.Item>
       <Menu.Menu position="right">
         <Menu.Item>
-          <Icon name='code'></Icon>
+          <Responsive {...Responsive.onlyLargeScreen}>
+            <Icon name="code" />
+          </Responsive>
         </Menu.Item>
         <Menu.Item>
-          Built with <Icon name="heart" /> by{" "}
-          <a href="https://github.com/SCHKN" className="schkn">
-            SCHKN
-          </a>
+          <Responsive {...Responsive.onlyLargeScreen}>
+            Built with <Icon name="heart" /> by{" "}
+            <a href="https://github.com/SCHKN" className="schkn">
+              SCHKN
+            </a>
+          </Responsive>
         </Menu.Item>
       </Menu.Menu>
     </Menu>
