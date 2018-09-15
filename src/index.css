@@ -97,27 +97,27 @@ i.icon.heart {
   margin-left: 5px !important;
 }
 
-.react-top-label,
-.angular-top-label,
-.vuejs-top-label,
-.ember-top-label {
+.react-label,
+.angular-label,
+.vuejs-label,
+.ember-label {
   color: #fff !important;
   font-size: 95% !important;
 }
 
-.react-top-label {
+.react-label {
   background-color: #60dbfa !important;
 }
 
-.angular-top-label {
+.angular-label {
   background-color: #de0a2f !important;
 }
 
-.vuejs-top-label {
+.vuejs-label {
   background-color: #3fb787 !important;
 }
 
-.ember-top-label {
+.ember-label {
   background-color: #ea5327 !important;
 }
 
