@@ -13,7 +13,7 @@
 <p align='center'>Never miss the trendiest tech of the day! :chart_with_upwards_trend:</p> 
 
 
-<img align="center" src="https://i.imgur.com/SeKLrtT.png" alt="front-page" />
+<img align="center" src="https://i.imgur.com/1fXhynf.png" alt="front-page" />
 
 <h1 align='center'>
   <img height='80' src='https://sendeyo.com/up/d/1140662d5f' alt='gitscientist' /> <br> How? Why? <br>
