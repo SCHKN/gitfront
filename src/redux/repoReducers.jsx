@@ -25,6 +25,7 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         frameworkSelected: action.framework,
+        ecosystemSelected: action.ecosystem,
         frameworks: state.frameworks.map(e => {
           if (e.framework === action.framework) {
             e.repos = [];
@@ -83,15 +84,18 @@ export const reducer = (state = initialState, action) => {
   }
 };
 
-export const fetchPosts = framework => {
+// Overloading reducers
+export const fetchPosts = (framework, ecosystem) => {
   return dispatch => {
-    dispatch(requestRepos(framework));
+    dispatch(requestRepos(framework, ecosystem));
     const filter = store.getState().filter;
     axios
       .get(
-        `https://api.github.com/search/repositories?q=topic:${framework}+created:${getLowerBound(
+        `https://api.github.com/search/repositories?q=topic:${
+          ecosystem ? ecosystem : framework
+        }+created:${getLowerBound(filter)}..${getUpperBound(
           filter
-        )}..${getUpperBound(filter)}&sort=stars&order=desc`
+        )}&sort=stars&order=desc`
       )
       .then(response => dispatch(fetchReposSuccess(response.data, framework)))
       .catch(err => dispatch(addError(err.response.data.message)));

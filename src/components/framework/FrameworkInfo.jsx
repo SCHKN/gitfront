@@ -4,7 +4,7 @@ import { fetchPosts } from "../../redux/repoReducers";
 import { connect } from "react-redux";
 
 const mapDispatchToProps = dispatch => ({
-  fetchPosts: framework => dispatch(fetchPosts(framework))
+  fetchPosts: framework => dispatch(fetchPosts(framework, null))
 });
 
 class FrameworkInfo extends Component {

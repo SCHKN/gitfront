@@ -165,6 +165,6 @@ i.icon.heart {
   margin-bottom: 25px !important;
 }
 
-.framework-info {
+.framework-info, .ecosystem-item {
   cursor: pointer;
 }

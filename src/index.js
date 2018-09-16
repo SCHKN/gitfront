@@ -25,7 +25,8 @@ import { reducer, fetchPosts, fetchFrameworks } from "./redux/repoReducers";
 //     repos: [
 //       repo1,
 //       repo2
-//     ]
+//     ],
+//    ecosystem: ["redux", "react-native", "styled-components"]
 //   },
 //   {
 //     framework: 'angular',
@@ -43,14 +44,15 @@ import { reducer, fetchPosts, fetchFrameworks } from "./redux/repoReducers";
 
 export const initialState = {
   frameworkSelected: "vuejs",
-  filter: 'year',
+  filter: "year",
   errors: [],
   frameworks: [
     {
       framework: "react",
       // github specific
       organization: "facebook",
-      officialRepoName: "react"
+      officialRepoName: "react",
+      ecosystem: ["redux", "react-native", "preact", "rxjs"]
     },
     {
       framework: "angular",
