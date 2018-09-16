@@ -117,7 +117,7 @@ export const fetchPosts = (framework, ecosystem) => {
 export const setFilterAndFetchPosts = filter => {
   return dispatch => {
     dispatch(setFilter(filter));
-    dispatch(fetchPosts(store.getState().frameworkSelected));
+    dispatch(fetchPosts(store.getState().frameworkSelected, store.getState().ecosystemSelected));
   };
 };
 
