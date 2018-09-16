@@ -32,3 +32,7 @@ Simply click on the cards available at the top of the page. You can also filter 
 
 If you like this project and want to support my work, do not hesitate to smash the :star: button!
 
+<h1 align='center'> History </h1>
+
+<b> v1.0 (14/09/2018) </b> - Users are able to filter the most popular front-end repositories. <br>
+<b> v1.1 (16/09/2018) </b> - Ecosystems : framework libraries are now integrated and can be filtered upon. 
