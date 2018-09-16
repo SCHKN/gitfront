@@ -1,15 +1,23 @@
+// Repository fetching
 export const REQUEST_REPOS = "REQUEST_REPOS";
 export const FETCH_REPOS_SUCCESS = "FETCH_REPOS_SUCCESS";
 export const FETCH_REPOS_ERROR = "FETCH_REPOS_ERROR";
+// Framework Fetching
 export const REQUEST_FRAMEWORKS = "REQUEST_FRAMEWORKS";
 export const FETCH_FRAMEWORKS_SUCCESS = "FETCH_FRAMEWORKS_SUCCESS";
 export const ADD_ERROR = "ADD_ERROR";
+// Filters
 export const SET_FILTER = "SET_FILTER";
+// Ecosystems
+export const SHOW_ECOSYSTEMS = "SHOW_ECOSYSTEMS";
+export const HIDE_ECOSYSTEMS = "HIDE_ECOSYSTEMS";
 
-export const requestRepos = framework => {
+// Actions creators
+export const requestRepos = (framework, ecosystem) => {
   return {
     type: REQUEST_REPOS,
-    framework
+    framework,
+    ecosystem
   };
 };
 
@@ -49,3 +57,15 @@ export const setFilter = filter => {
     filter
   };
 };
+
+export const showEcosystems = () => {
+  return {
+    type: SHOW_ECOSYSTEMS
+  };
+};
+
+export const hideEcosystems = () => {
+  return {
+    type: HIDE_ECOSYSTEMS
+  }
+}

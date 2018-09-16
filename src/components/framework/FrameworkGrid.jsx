@@ -15,7 +15,12 @@ const FrameworkGrid = ({ data }) => {
           data.frameworks &&
           data.frameworks.sort((a, b) => a.stars < b.stars).map((z, index) => (
             <Grid.Column width={4} key={z.framework}>
-              <FrameworkItem data={z} key={z.framework} rank={index + 1} />
+              <FrameworkItem
+                data={z}
+                key={z.framework}
+                rank={index + 1}
+                showEcosystems={data.showEcosystems}
+              />
             </Grid.Column>
           ))}
       </Grid.Row>

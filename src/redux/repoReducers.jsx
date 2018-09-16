@@ -10,7 +10,9 @@ import {
   SET_FILTER,
   requestFrameworks,
   fetchFrameworksSuccess,
-  setFilter
+  setFilter,
+  SHOW_ECOSYSTEMS,
+  HIDE_ECOSYSTEMS
 } from "./repoActions";
 import axios from "axios";
 import { initialState, store } from "./../index";
@@ -78,6 +80,16 @@ export const reducer = (state = initialState, action) => {
       return {
         ...state,
         filter: action.filter
+      };
+    case SHOW_ECOSYSTEMS:
+      return {
+        ...state,
+        showEcosystems: true
+      };
+    case HIDE_ECOSYSTEMS:
+      return {
+        ...state,
+        showEcosystems: false
       };
     default:
       return state;

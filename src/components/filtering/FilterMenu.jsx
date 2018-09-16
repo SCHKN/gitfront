@@ -2,6 +2,8 @@ import React from "react";
 import { Menu, Header, Icon, Dropdown, Button, Label } from "semantic-ui-react";
 import { connect } from "react-redux";
 import { setFilterAndFetchPosts } from "../../redux/repoReducers";
+import { showEcosystems } from "../../redux/repoActions";
+import { hideEcosystems } from "./../../redux/repoActions";
 
 const options = [
   {
@@ -30,15 +32,33 @@ const options = [
   }
 ];
 
-const mapDispatchToProps = dispatch => ({
-  changeFilter: filter => dispatch(setFilterAndFetchPosts(filter))
+const mapStateToProps = state => ({
+  ecosystemVisible: state.showEcosystems,
+  frameworkSelected: state.frameworkSelected,
+  ecosystemSelected: state.ecosystemSelected
 });
 
-const FilterMenu = ({ changeFilter }) => {
+const mapDispatchToProps = dispatch => ({
+  changeFilter: filter => dispatch(setFilterAndFetchPosts(filter)),
+  showEcosystems: () => dispatch(showEcosystems()),
+  hideEcosystems: () => dispatch(hideEcosystems())
+});
+
+const FilterMenu = ({
+  changeFilter,
+  showEcosystems,
+  hideEcosystems,
+  ecosystemVisible,
+  frameworkSelected,
+  ecosystemSelected
+}) => {
   return (
     <Menu size="large">
       <Menu.Item>
-        <Icon name="wrench" /> Filters
+        <Icon name="world" />{" "}
+        {"Currently watching " +
+          frameworkSelected +
+          (ecosystemSelected ? " with ecosystem " + ecosystemSelected : "")}
       </Menu.Item>
 
       <Menu.Menu position="right">
@@ -58,7 +78,12 @@ const FilterMenu = ({ changeFilter }) => {
           </Header>
         </Menu.Item>
         <Menu.Item>
-          <Button content="Show Ecosystems" />
+          <Button
+            content={ecosystemVisible ? "Hide Ecosystems" : "Show Ecosystems"}
+            onClick={() => {
+              ecosystemVisible ? hideEcosystems() : showEcosystems();
+            }}
+          />
         </Menu.Item>
       </Menu.Menu>
     </Menu>
@@ -66,6 +91,6 @@ const FilterMenu = ({ changeFilter }) => {
 };
 
 export default connect(
-  null,
+  mapStateToProps,
   mapDispatchToProps
 )(FilterMenu);

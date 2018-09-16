@@ -4,12 +4,12 @@ import FrameworkStatistics from "./FrameworkStatistics";
 import FrameworkInfo from "./FrameworkInfo";
 import FrameworkEcosystem from "./FrameworkEcosystem";
 
-const FrameworkItem = ({ data, rank }) => {
+const FrameworkItem = ({ data, rank, showEcosystems }) => {
   return (
     <Segment.Group>
       <FrameworkInfo data={data} rank={rank} />
       <FrameworkStatistics data={data} />
-      {data.ecosystem && data.ecosystem.length > 0 && <FrameworkEcosystem ecosystem={data.ecosystem} framework={data.framework} />}
+      {showEcosystems && data.ecosystem && data.ecosystem.length > 0 && <FrameworkEcosystem ecosystem={data.ecosystem} framework={data.framework} />}
     </Segment.Group>
   );
 };

@@ -14,6 +14,8 @@ import { reducer, fetchPosts, fetchFrameworks } from "./redux/repoReducers";
 
 // const state = {
 //    frameworkSelected: 'react',
+//    ecosystemSelected: 'redux',
+//    showEcosystems: 'false',
 //    filter: 'day',
 //    [
 //    {
@@ -44,6 +46,7 @@ import { reducer, fetchPosts, fetchFrameworks } from "./redux/repoReducers";
 
 export const initialState = {
   frameworkSelected: "vuejs",
+  showEcosystems: false,
   filter: "year",
   errors: [],
   frameworks: [
