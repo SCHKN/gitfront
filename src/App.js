@@ -7,6 +7,7 @@ import ErrorMessage from "./components/message/ErrorMessage";
 import FilterMenu from "./components/filtering/FilterMenu";
 import favicon from './assets/favicon.ico'
 import ReactGA from 'react-ga';
+import FeaturesMessage from "./components/message/FeaturesMessage";
 
 // ReactGA.initialize('UA-125805120-1');
 // ReactGA.pageview(window.location.pathname + window.location.search);
@@ -20,6 +21,7 @@ class App extends Component {
           <Grid.Column>
             <Container>
               <ErrorMessage />
+              <FeaturesMessage />
               <Divider horizontal>Frameworks</Divider>
               <FrameworkGrid />
               <Divider horizontal>Results</Divider>
