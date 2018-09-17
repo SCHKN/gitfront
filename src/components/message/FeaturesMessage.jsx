@@ -3,12 +3,10 @@ import { Message } from "semantic-ui-react";
 const FeaturesMessage = () => {
   return (
     <Message
-      icon="star outline"
+      icon="cubes"
       header="Have you heard about the new features?"
       list={[
-        'Show Ecosystems - get the best repos for your favorite framework library!',
-        'Suggest your favorite library on our Github, if it gets selected you will be marked as a backer on our repo!',
-        'Gitfront got prettier! We added some cool styling just to please your eyes.'
+        'Nuxt and PrimeNG frameworks have been added to Gitfront - check them out!'
       ]}
     />
   );
