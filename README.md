@@ -36,3 +36,8 @@ If you like this project and want to support my work, do not hesitate to smash t
 
 <b> v1.0 (14/09/2018) </b> - Users are able to filter the most popular front-end repositories. <br>
 <b> v1.1 (16/09/2018) </b> - Ecosystems : framework libraries are now integrated and can be filtered upon. 
+
+<h1 align='center'> Contributions </h1>
+
+<a href='https://github.com/onursenture'>OnurSenture</a> by suggesting PrimeNG ecosystem for Angular.
+
