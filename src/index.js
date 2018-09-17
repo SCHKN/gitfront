@@ -60,12 +60,14 @@ export const initialState = {
     {
       framework: "angular",
       organization: "angular",
-      officialRepoName: "angular"
+      officialRepoName: "angular",
+      ecosystem: ["primeng"]
     },
     {
       framework: "vuejs",
       organization: "vuejs",
-      officialRepoName: "vue"
+      officialRepoName: "vue",
+      ecosystem: ["nuxt"]
     },
     {
       framework: "ember",

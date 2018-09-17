@@ -168,3 +168,7 @@ i.icon.heart {
 .framework-info, .ecosystem-item {
   cursor: pointer;
 }
+
+.ecosystem-segment {
+  min-height: 75px;
+}

@@ -10,7 +10,7 @@ const mapDispatchToProps = dispatch => ({
 
 const FrameworkEcosystem = ({ ecosystem, framework, fetchPosts }) => {
   return (
-    <Segment>
+    <Segment className="ecosystem-segment">
       <List horizontal>
         {ecosystem.map(library => (
           <List.Item
