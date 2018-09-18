@@ -1,5 +1,12 @@
 import React from "react";
-import { Menu, Header, Icon, Dropdown, Button, Label } from "semantic-ui-react";
+import {
+  Menu,
+  Header,
+  Icon,
+  Dropdown,
+  Button,
+  Responsive
+} from "semantic-ui-react";
 import { connect } from "react-redux";
 import { setFilterAndFetchPosts } from "../../redux/repoReducers";
 import { showEcosystems } from "../../redux/repoActions";
@@ -54,37 +61,44 @@ const FilterMenu = ({
 }) => {
   return (
     <Menu size="large">
-      <Menu.Item>
-        <Icon name="world" />{" "}
-        {"Currently watching " +
-          frameworkSelected +
-          (ecosystemSelected ? " with ecosystem " + ecosystemSelected : "")}
-      </Menu.Item>
-
+      <Responsive>
+        <Menu.Item>
+          <Icon name="world" />{" "}
+          {"Currently watching " +
+            frameworkSelected +
+            (ecosystemSelected ? " with ecosystem " + ecosystemSelected : "")}
+        </Menu.Item>
+      </Responsive>
       <Menu.Menu position="right">
-        <Menu.Item>
-          <Header as="h4">
-            <Icon name="line graph" />
-            <Header.Content>
-              Trending repos{" "}
-              <Dropdown
-                inline
-                header="Adjust time span"
-                options={options}
-                defaultValue={options[3].value}
-                onChange={(e, { value }) => changeFilter(value)}
-              />
-            </Header.Content>
-          </Header>
-        </Menu.Item>
-        <Menu.Item>
-          <Button
-            content={ecosystemVisible ? "Hide Ecosystems" : "Show Ecosystems"}
-            onClick={() => {
-              ecosystemVisible ? hideEcosystems() : showEcosystems();
-            }}
-          />
-        </Menu.Item>
+        <Responsive>
+          <Menu.Item>
+            <Header as="h4">
+              <Icon name="line graph" />
+              <Header.Content>
+                Trending repos{" "}
+                <Dropdown
+                  inline
+                  header="Adjust time span"
+                  options={options}
+                  defaultValue={options[3].value}
+                  onChange={(e, { value }) => changeFilter(value)}
+                />
+              </Header.Content>
+            </Header>
+          </Menu.Item>
+        </Responsive>
+        <Responsive>
+          <Menu.Item>
+            <Button
+              content={ecosystemVisible ? "Hide Ecosystems" : "Show Ecosystems"}
+              onClick={() => {
+                ecosystemVisible ? hideEcosystems() : showEcosystems();
+              }}
+              size="mini"
+              className="ecosystem-button"
+            />
+          </Menu.Item>
+        </Responsive>
       </Menu.Menu>
     </Menu>
   );
