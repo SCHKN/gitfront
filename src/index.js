@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "semantic-ui-css/semantic.min.css";
 import "./assets/vendors/animate.css";
 import "./index.css";
+import './assets/styles/responsive.css'
 import App from "./App";
 import thunkMiddleware from "redux-thunk";
 import { Provider } from "react-redux";

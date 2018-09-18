@@ -165,6 +165,10 @@ i.icon.heart {
   margin-bottom: 25px !important;
 }
 
+.framework-image {
+  margin-right: 10px !important;
+}
+
 .framework-info, .ecosystem-item {
   cursor: pointer;
 }

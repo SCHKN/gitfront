@@ -1,5 +1,12 @@
 import React from "react";
-import { Segment, Item, Statistic, Icon, Label } from "semantic-ui-react";
+import {
+  Segment,
+  Item,
+  Statistic,
+  Icon,
+  Label,
+  Responsive
+} from "semantic-ui-react";
 import { format } from "date-fns";
 
 export default ({ repo, framework }) => {
@@ -10,9 +17,10 @@ export default ({ repo, framework }) => {
           {repo.language ? repo.language : "Undefined"}
         </Label>
         <Item.Group>
-          <Item>
-            <Item.Image size="tiny" src={repo.owner["avatar_url"]} />
-
+          <Item className="framework-item">
+            <Responsive minWidth="1140">
+              <Item.Image src={repo.owner["avatar_url"]} size="tiny" className="framework-image"/>
+            </Responsive>
             <Item.Content>
               <Item.Header as="a" href={repo.html_url}>
                 {repo.full_name}

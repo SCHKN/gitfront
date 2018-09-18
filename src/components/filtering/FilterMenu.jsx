@@ -61,7 +61,7 @@ const FilterMenu = ({
 }) => {
   return (
     <Menu size="large">
-      <Responsive>
+      <Responsive minWidth="768">
         <Menu.Item>
           <Icon name="world" />{" "}
           {"Currently watching " +
