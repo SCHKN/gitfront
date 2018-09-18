@@ -11,6 +11,12 @@ class FrameworkInfo extends Component {
   constructor(props) {
     super(props);
     this.state = { isHovered: false };
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(framework) {
+    this.props.fetchPosts(framework);
+    this.props.handleScroll();
   }
 
   render() {
@@ -18,7 +24,7 @@ class FrameworkInfo extends Component {
     const { framework } = data;
     return (
       <Segment
-        onClick={() => fetchPosts(framework)}
+        onClick={() => this.handleClick(framework)}
         textAlign="center"
         className="framework-info"
         onMouseEnter={() => this.setState({ isHovered: true })}

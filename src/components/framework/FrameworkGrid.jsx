@@ -7,7 +7,7 @@ const mapStateToProps = state => ({
   data: state
 });
 
-const FrameworkGrid = ({ data }) => {
+const FrameworkGrid = ({ data, handleScroll }) => {
   return (
     <Grid stackable columns={4} className="animated fadeIn">
       <Grid.Row>
@@ -20,6 +20,7 @@ const FrameworkGrid = ({ data }) => {
                 key={z.framework}
                 rank={index + 1}
                 showEcosystems={data.showEcosystems}
+                handleScroll={handleScroll}
               />
             </Grid.Column>
           ))}

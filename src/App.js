@@ -5,27 +5,41 @@ import FrameworkGrid from "./components/framework/FrameworkGrid";
 import TopMenu from "./components/navigation/TopMenu";
 import ErrorMessage from "./components/message/ErrorMessage";
 import FilterMenu from "./components/filtering/FilterMenu";
-import favicon from './assets/favicon.ico'
-import ReactGA from 'react-ga';
+import favicon from "./assets/favicon.ico";
+import ReactGA from "react-ga";
 import FeaturesMessage from "./components/message/FeaturesMessage";
+import ReactDOM from "react-dom";
 
-// ReactGA.initialize('UA-125805120-1');
-// ReactGA.pageview(window.location.pathname + window.location.search);
+ReactGA.initialize('UA-125805120-1');
+ReactGA.pageview(window.location.pathname + window.location.search);
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.propRef = React.createRef();
+    this.handleScrollToElement = this.handleScrollToElement.bind(this);
+  }
+
+  handleScrollToElement() {
+    const domNode = ReactDOM.findDOMNode(this.propRef.current);
+    domNode.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
   render() {
     return (
       <div>
         <TopMenu />
-        <Grid className='main-grid'>
+        <Grid className="main-grid">
           <Grid.Column>
             <Container>
               <ErrorMessage />
               <FeaturesMessage />
-              <Divider horizontal>Frameworks</Divider>
-              <FrameworkGrid />
+              <Divider horizontal onClick={this.handleScrollToElement}>
+                Frameworks
+              </Divider>
+              <FrameworkGrid handleScroll={this.handleScrollToElement} />
               <Divider horizontal>Results</Divider>
-              <FilterMenu />
+              <FilterMenu ref={this.propRef} />
               <RepoList />
             </Container>
           </Grid.Column>
