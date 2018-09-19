@@ -8,9 +8,11 @@ import {
   REQUEST_FRAMEWORKS,
   FETCH_FRAMEWORKS_SUCCESS,
   SET_FILTER,
+  SET_DATASOURCE,
   requestFrameworks,
   fetchFrameworksSuccess,
   setFilter,
+  setDatasource,
   SHOW_ECOSYSTEMS,
   HIDE_ECOSYSTEMS
 } from "./repoActions";
@@ -41,7 +43,7 @@ export const reducer = (state = initialState, action) => {
         ...state,
         frameworks: state.frameworks.map(e => {
           if (e.framework === action.framework) {
-            e.repos = action.payload.items;
+            e.repos = action.payload;
             e.isRepoFetching = false;
           }
           return e;
@@ -81,6 +83,11 @@ export const reducer = (state = initialState, action) => {
         ...state,
         filter: action.filter
       };
+    case SET_DATASOURCE:
+      return {
+        ...state,
+        dataSourceSelected: action.datasource
+      };
     case SHOW_ECOSYSTEMS:
       return {
         ...state,
@@ -99,7 +106,27 @@ export const reducer = (state = initialState, action) => {
 // Overloading reducers
 export const fetchPosts = (framework, ecosystem) => {
   return dispatch => {
+    const datasource = store.getState().dataSourceSelected;
     dispatch(requestRepos(framework, ecosystem));
+    if (datasource === "github") {
+      dispatch(fetchGithubPosts(framework, ecosystem));
+    } else if (datasource === "reddit") {
+      dispatch(fetchRedditPosts(framework, getCorrespondingSubreddit(framework)));
+    }
+  };
+};
+
+const getCorrespondingSubreddit = (framework) => {
+  const matchingItem = store.getState().frameworks.find(p => {
+    if (p.framework === framework) {
+      return p;
+    }
+  })
+  return matchingItem.subredditName;
+}
+
+const fetchGithubPosts = (framework, ecosystem) => {
+  return dispatch => {
     const filter = store.getState().filter;
     axios
       .get(
@@ -109,15 +136,44 @@ export const fetchPosts = (framework, ecosystem) => {
           filter
         )}&sort=stars&order=desc`
       )
-      .then(response => dispatch(fetchReposSuccess(response.data, framework)))
+      .then(response =>
+        dispatch(fetchReposSuccess(response.data.items, framework))
+      )
       .catch(err => dispatch(addError(err.response.data.message)));
+  };
+};
+
+const fetchRedditPosts = (framework, subreddit) => {
+  return dispatch => {
+    axios
+      .get(`https://www.reddit.com/r/${subreddit}/top.json?limit=20`)
+      .then(response =>
+        dispatch(fetchReposSuccess(response.data.data.children, framework))
+      );
   };
 };
 
 export const setFilterAndFetchPosts = filter => {
   return dispatch => {
     dispatch(setFilter(filter));
-    dispatch(fetchPosts(store.getState().frameworkSelected, store.getState().ecosystemSelected));
+    dispatch(
+      fetchPosts(
+        store.getState().frameworkSelected,
+        store.getState().ecosystemSelected
+      )
+    );
+  };
+};
+
+export const setDatasourceAndFetchPosts = datasource => {
+  return dispatch => {
+    dispatch(setDatasource(datasource));
+    dispatch(
+      fetchPosts(
+        store.getState().frameworkSelected,
+        store.getState().ecosystemSelected
+      )
+    );
   };
 };
 

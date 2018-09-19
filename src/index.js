@@ -47,6 +47,7 @@ import { reducer, fetchPosts, fetchFrameworks } from "./redux/repoReducers";
 
 export const initialState = {
   frameworkSelected: "vuejs",
+  dataSourceSelected: "github",
   showEcosystems: false,
   filter: "year",
   errors: [],
@@ -56,24 +57,29 @@ export const initialState = {
       // github specific
       organization: "facebook",
       officialRepoName: "react",
-      ecosystem: ["redux", "react-native", "preact", "rxjs"]
+      ecosystem: ["redux", "react-native", "preact", "rxjs"],
+      // reddit specific
+      subredditName: "reactjs"
     },
     {
       framework: "angular",
       organization: "angular",
       officialRepoName: "angular",
-      ecosystem: ["primeng"]
+      ecosystem: ["primeng"],
+      subredditName: "angularjs"
     },
     {
       framework: "vuejs",
       organization: "vuejs",
       officialRepoName: "vue",
-      ecosystem: ["nuxt"]
+      ecosystem: ["nuxt"],
+      subredditName: "vuejs"
     },
     {
       framework: "ember",
       organization: "emberjs",
-      officialRepoName: "ember.js"
+      officialRepoName: "ember.js",
+      subredditName: "emberjs"
     }
   ]
 };

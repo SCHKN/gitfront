@@ -8,6 +8,7 @@ export const FETCH_FRAMEWORKS_SUCCESS = "FETCH_FRAMEWORKS_SUCCESS";
 export const ADD_ERROR = "ADD_ERROR";
 // Filters
 export const SET_FILTER = "SET_FILTER";
+export const SET_DATASOURCE = "SET_DATASOURCE";
 // Ecosystems
 export const SHOW_ECOSYSTEMS = "SHOW_ECOSYSTEMS";
 export const HIDE_ECOSYSTEMS = "HIDE_ECOSYSTEMS";
@@ -58,6 +59,13 @@ export const setFilter = filter => {
   };
 };
 
+export const setDatasource = datasource => {
+  return {
+    type: SET_DATASOURCE,
+    datasource
+  };
+};
+
 export const showEcosystems = () => {
   return {
     type: SHOW_ECOSYSTEMS
@@ -67,5 +75,5 @@ export const showEcosystems = () => {
 export const hideEcosystems = () => {
   return {
     type: HIDE_ECOSYSTEMS
-  }
-}
+  };
+};

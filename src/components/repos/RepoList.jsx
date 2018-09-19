@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import RepoItem from "./RepoItem";
 import { connect } from "react-redux";
 import { Segment, Dimmer, Loader } from "semantic-ui-react";
+import RedditPost from "./RedditPost";
 
 const mapStateToProps = state => ({
   data: state
@@ -19,13 +20,21 @@ class RepoList extends Component {
         className="results-segment animated fadeIn"
       >
         {matchingFramework.repos &&
-          matchingFramework.repos.map(repo => (
-            <RepoItem
-              repo={repo}
-              key={repo.id}
-              framework={data.frameworkSelected}
-            />
-          ))}
+          matchingFramework.repos.map(item => {
+            if (data.dataSourceSelected === "github") {
+              return (
+                <RepoItem
+                  repo={item}
+                  key={item.id}
+                  framework={data.frameworkSelected}
+                />
+              );
+            } else {
+              return (
+                <RedditPost post={item.data}/>
+              )
+            }
+          })}
       </Segment>
     );
   }

@@ -8,7 +8,7 @@ import {
   Responsive
 } from "semantic-ui-react";
 import { connect } from "react-redux";
-import { setFilterAndFetchPosts } from "../../redux/repoReducers";
+import { setFilterAndFetchPosts, setDatasourceAndFetchPosts } from "../../redux/repoReducers";
 import { showEcosystems } from "../../redux/repoActions";
 import { hideEcosystems } from "./../../redux/repoActions";
 
@@ -39,54 +39,96 @@ const options = [
   }
 ];
 
+const dataSourceOptions = [
+  {
+    key: "github",
+    text: "GitHub",
+    value: "github",
+    content: "GitHub"
+  },
+  {
+    key: "reddit",
+    text: "Reddit",
+    value: "reddit",
+    content: "Reddit"
+  }
+];
+
 const mapStateToProps = state => ({
   ecosystemVisible: state.showEcosystems,
   frameworkSelected: state.frameworkSelected,
-  ecosystemSelected: state.ecosystemSelected
+  ecosystemSelected: state.ecosystemSelected,
+  dataSourceSelected: state.dataSourceSelected,
+  filter: state.filter
 });
 
 const mapDispatchToProps = dispatch => ({
   changeFilter: filter => dispatch(setFilterAndFetchPosts(filter)),
   showEcosystems: () => dispatch(showEcosystems()),
-  hideEcosystems: () => dispatch(hideEcosystems())
+  hideEcosystems: () => dispatch(hideEcosystems()),
+  changeDatasource: datasource => dispatch(setDatasourceAndFetchPosts(datasource))
 });
 
 const FilterMenu = ({
   changeFilter,
+  changeDatasource,
   showEcosystems,
   hideEcosystems,
   ecosystemVisible,
   frameworkSelected,
-  ecosystemSelected
+  ecosystemSelected,
+  dataSourceSelected,
+  filter
 }) => {
   return (
     <Menu size="large">
       <Responsive minWidth="768">
         <Menu.Item>
-          <Icon name="world" />{" "}
+          <Icon name="eye" />{" "}
           {"Currently watching " +
             frameworkSelected +
-            (ecosystemSelected ? " with ecosystem " + ecosystemSelected : "")}
+            (ecosystemSelected ? " with ecosystem " + ecosystemSelected : "") +
+            " on " +
+            dataSourceSelected}
         </Menu.Item>
       </Responsive>
       <Menu.Menu position="right">
         <Responsive>
           <Menu.Item>
             <Header as="h4">
-              <Icon name="line graph" />
+              <Icon name={dataSourceSelected} />
               <Header.Content>
-                Trending repos{" "}
+                Datasource{" "}
                 <Dropdown
                   inline
-                  header="Adjust time span"
-                  options={options}
-                  defaultValue={options[3].value}
-                  onChange={(e, { value }) => changeFilter(value)}
+                  header="Choose your datasource"
+                  options={dataSourceOptions}
+                  defaultValue={dataSourceOptions[0].value}
+                  onChange={(e, { value }) => {changeDatasource(value)}}
                 />
               </Header.Content>
             </Header>
           </Menu.Item>
         </Responsive>
+        {dataSourceSelected === "github" && (
+          <Responsive>
+            <Menu.Item>
+              <Header as="h4">
+                <Icon name="line graph" />
+                <Header.Content>
+                  Trending repos{" "}
+                  <Dropdown
+                    inline
+                    header="Adjust time span"
+                    options={options}
+                    defaultValue={filter}
+                    onChange={(e, { value }) => changeFilter(value)}
+                  />
+                </Header.Content>
+              </Header>
+            </Menu.Item>
+          </Responsive>
+        )}
         <Responsive>
           <Menu.Item>
             <Button
