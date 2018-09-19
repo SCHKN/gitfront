@@ -1,6 +1,6 @@
 <h1 align="center">
   	<img height="80" src="https://sendeyo.com/up/d/f30c064b15" alt="gitfront" /> <br> gitfront <br>
-    <img align='center' src="https://img.shields.io/badge/version-1.1-brightgreen.svg"/>  
+    <img align='center' src="https://img.shields.io/badge/version-1.2-brightgreen.svg"/>  
     <img align='center' src='https://img.shields.io/badge/status-up-brightgreen.svg'/>
     <img align='center' src='https://travis-ci.org/SCHKN/gitfront.svg?branch=master' /> <br> <br>
     
@@ -35,7 +35,8 @@ If you like this project and want to support my work, do not hesitate to smash t
 <h1 align='center'> History </h1>
 
 <b> v1.0 (14/09/2018) </b> - Users are able to filter the most popular front-end repositories. <br>
-<b> v1.1 (16/09/2018) </b> - Ecosystems : framework libraries are now integrated and can be filtered upon. 
+<b> v1.1 (16/09/2018) </b> - Ecosystems : framework libraries are now integrated and can be filtered upon. <br>
+<b> v1.2 (19/09/2018) </b> - Reddit was added a datasource. "Top" (as defined by Reddit) posts can be retrieved by front-end subreddit.
 
 <h1 align='center'> Contributions </h1>
 
