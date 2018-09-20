@@ -30,6 +30,7 @@ export const reducer = (state = initialState, action) => {
         ...state,
         frameworkSelected: action.framework,
         ecosystemSelected: action.ecosystem,
+        errors: [],
         frameworks: state.frameworks.map(e => {
           if (e.framework === action.framework) {
             e.repos = [];
@@ -111,19 +112,21 @@ export const fetchPosts = (framework, ecosystem) => {
     if (datasource === "github") {
       dispatch(fetchGithubPosts(framework, ecosystem));
     } else if (datasource === "reddit") {
-      dispatch(fetchRedditPosts(framework, getCorrespondingSubreddit(framework)));
+      dispatch(
+        fetchRedditPosts(framework, getCorrespondingSubreddit(framework))
+      );
     }
   };
 };
 
-const getCorrespondingSubreddit = (framework) => {
+const getCorrespondingSubreddit = framework => {
   const matchingItem = store.getState().frameworks.find(p => {
     if (p.framework === framework) {
       return p;
     }
-  })
+  });
   return matchingItem.subredditName;
-}
+};
 
 const fetchGithubPosts = (framework, ecosystem) => {
   return dispatch => {
@@ -149,6 +152,11 @@ const fetchRedditPosts = (framework, subreddit) => {
       .get(`https://www.reddit.com/r/${subreddit}/top.json?limit=20`)
       .then(response =>
         dispatch(fetchReposSuccess(response.data.data.children, framework))
+      )
+      .catch(err =>
+        dispatch(
+          addError("No subreddit were found for this tech. Or Reddit is down.")
+        )
       );
   };
 };
