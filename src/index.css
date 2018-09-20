@@ -176,3 +176,9 @@ i.icon.heart {
 .ecosystem-segment {
   min-height: 75px;
 }
+
+/* Contenders */
+
+.contender-label {
+  background-color: #e8e8e8 !important;
+}

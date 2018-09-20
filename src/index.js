@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "semantic-ui-css/semantic.min.css";
 import "./assets/vendors/animate.css";
 import "./index.css";
-import './assets/styles/responsive.css'
+import "./assets/styles/responsive.css";
 import App from "./App";
 import thunkMiddleware from "redux-thunk";
 import { Provider } from "react-redux";
@@ -54,6 +54,7 @@ export const initialState = {
   frameworks: [
     {
       framework: "react",
+      isContender: false,
       // github specific
       organization: "facebook",
       officialRepoName: "react",
@@ -63,6 +64,7 @@ export const initialState = {
     },
     {
       framework: "angular",
+      isContender: false,
       organization: "angular",
       officialRepoName: "angular",
       ecosystem: ["primeng"],
@@ -70,6 +72,7 @@ export const initialState = {
     },
     {
       framework: "vuejs",
+      isContender: false,
       organization: "vuejs",
       officialRepoName: "vue",
       ecosystem: ["nuxt"],
@@ -77,20 +80,72 @@ export const initialState = {
     },
     {
       framework: "ember",
+      isContender: false,
       organization: "emberjs",
       officialRepoName: "ember.js",
       subredditName: "emberjs"
+    },
+    {
+      framework: "hyperapp",
+      isContender: true,
+      organization: "jorgebucaran",
+      officialRepoName: "hyperapp",
+      subredditName: "HyperApp"
+    },
+    {
+      framework: "backbone",
+      isContender: true,
+      organization: "jashkenas",
+      officialRepoName: "backbone",
+      subredditName: "backbonejs"
+    },
+    {
+      framework: "polymer",
+      isContender: true,
+      organization: "Polymer",
+      officialRepoName: "polymer",
+      subredditName: "polymerjs"
+    },
+    {
+      framework: "bootstrap",
+      isContender: true,
+      organization: "twbs",
+      officialRepoName: "bootstrap",
+      subredditName: "bootstrap"
+    },
+    {
+      framework: "sass",
+      isContender: true,
+      organization: "sass",
+      officialRepoName: "sass",
+      subredditName: "Sass"
+    },
+    {
+      framework: "jquery",
+      isContender: true,
+      organization: "jquery",
+      officialRepoName: "jquery",
+      subredditName: "jquery"
+    },
+    {
+      framework: "electron",
+      isContender: true,
+      organization: "electron",
+      officialRepoName: "electron",
+      subredditName: "electronjs"
     }
   ]
 };
 
 export const store = createStore(reducer, applyMiddleware(thunkMiddleware));
 
-initialState.frameworks.map(f =>
-  store.dispatch(
-    fetchFrameworks(f.framework, f.organization, f.officialRepoName)
-  )
-);
+initialState.frameworks
+  .filter(t => !t.isContender)
+  .map(f =>
+    store.dispatch(
+      fetchFrameworks(f.framework, f.organization, f.officialRepoName)
+    )
+  );
 
 store.dispatch(fetchPosts(initialState.frameworks[2].framework));
 
