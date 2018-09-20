@@ -33,14 +33,14 @@ class App extends Component {
         <Grid className="main-grid">
           <Grid.Column>
             <Container>
-              <ErrorMessage />
-              <FeaturesMessage />
+              {/* <FeaturesMessage /> */}
               <Divider horizontal onClick={this.handleScrollToElement}>
                 Frameworks
               </Divider>
               <FrameworkGrid handleScroll={this.handleScrollToElement} />
               <ContendersSegment />
               <Divider horizontal>Results</Divider>
+              <ErrorMessage />
               <FilterMenu ref={this.propRef} />
               <RepoList />
             </Container>

@@ -3,6 +3,7 @@ import RepoItem from "./RepoItem";
 import { connect } from "react-redux";
 import { Segment, Dimmer, Loader } from "semantic-ui-react";
 import RedditPost from "./RedditPost";
+import NoResultsItem from "./NoResultsItem";
 
 const mapStateToProps = state => ({
   data: state
@@ -19,7 +20,9 @@ class RepoList extends Component {
         loading={matchingFramework.isRepoFetching}
         className="results-segment animated fadeIn"
       >
-        {matchingFramework.repos &&
+        {(matchingFramework.repos &&
+          (matchingFramework.repos.length === 0 &&
+            !matchingFramework.isRepoFetching && <NoResultsItem />)) ||
           matchingFramework.repos.map(item => {
             if (data.dataSourceSelected === "github") {
               return (
@@ -30,9 +33,7 @@ class RepoList extends Component {
                 />
               );
             } else {
-              return (
-                <RedditPost post={item.data}/>
-              )
+              return <RedditPost post={item.data} />;
             }
           })}
       </Segment>
